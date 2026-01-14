@@ -1,7 +1,7 @@
 name: Generate Snake
 
 permissions:
-  contents: write   # Allow push
+  contents: write   # GitHub को write permission देना जरूरी
 
 on:
   schedule:
@@ -20,8 +20,7 @@ jobs:
 
       - uses: crazy-max/ghaction-github-pages@v3
         with:
-          target_branch: output   # Branch where SVG will be pushed
-          publish_dir: dist       # Correct param name
+          target_branch: output   # जिस branch में push करना है
+          build_dir: dist         # v3 में सही parameter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
