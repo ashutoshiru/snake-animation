@@ -1,5 +1,8 @@
 name: Generate Snake
 
+permissions:
+  contents: write   # Allow push
+
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -14,9 +17,11 @@ jobs:
           github_user_name: ashutoshiru
           outputs: |
             dist/github-contribution-grid-snake.svg
+
       - uses: crazy-max/ghaction-github-pages@v3
         with:
-          target_branch: output
-          build_dir: dist
+          target_branch: output   # Branch where SVG will be pushed
+          publish_dir: dist       # Correct param name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
